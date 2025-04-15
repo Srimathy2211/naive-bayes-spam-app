@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Response Predictor</title>
+    <style>
+        body {
+            background-color: lavender;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #4B0082;
+        }
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px;
+            width: 80%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #9370DB;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .result {
+            font-size: 20px;
+            color: #4B0082;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Email Response Predictor</h1>
+    <form action="/predict" method="post">
+        <input type="text" name="length" placeholder="Email Length (words)" required><br>
+        <input type="text" name="urgency" placeholder="Urgency (1-5)" required><br>
+        <input type="text" name="attachments" placeholder="Number of Attachments" required><br>
+        <input type="text" name="hour_sent" placeholder="Hour Sent (0-23)" required><br>
+        <input type="submit" value="Predict">
+    </form>
+    {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+    {% endif %}
+</body>
+</html>
